@@ -1,0 +1,266 @@
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "revision": 0,
+  "last_node_id": 8,
+  "last_link_id": 6,
+  "nodes": [
+    {
+      "id": 2,
+      "type": "LoadImage",
+      "pos": [
+        -660.645263671875,
+        153.7012939453125
+      ],
+      "size": [
+        315,
+        314
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "00005-512.png",
+        "image",
+        ""
+      ]
+    },
+    {
+      "id": 3,
+      "type": "PreviewImage",
+      "pos": [
+        318.6031799316406,
+        145.13885498046875
+      ],
+      "size": [
+        390.6990966796875,
+        473.9508056640625
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 2
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 1,
+      "type": "ComfyWordCloud",
+      "pos": [
+        -208.3520965576172,
+        109.8369140625
+      ],
+      "size": [
+        400,
+        612
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "color_ref_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 1
+        },
+        {
+          "name": "mask_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 6
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            2
+          ]
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_wordcloud",
+        "ver": "9f4efdba82707ae8bed25ec7d79ce9cbce2df324",
+        "Node name for S&R": "ComfyWordCloud"
+      },
+      "widgets_values": [
+        "",
+        512,
+        512,
+        1,
+        0,
+        "simkai.ttf",
+        4,
+        128,
+        0.5,
+        "viridis",
+        "#FFFFFF",
+        true,
+        0.9,
+        200,
+        false,
+        false,
+        -1,
+        "",
+        0,
+        "#000000",
+        "",
+        60,
+        [
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "type": "Simple String",
+      "pos": [
+        -626.9877319335938,
+        573.7312622070312
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            6
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "cg-use-everywhere",
+        "ver": "8017bc6b063f45db6b986d9fc8bb76bd3234b838",
+        "Node name for S&R": "Simple String"
+      },
+      "widgets_values": [
+        "回想第一次接触PowerShell,时间大约是11年前。那一年是在做邮件升级相关的项目，批量任务处理不再能够通过GUI图形界面进行处理，进行服务器设置和用户管理的过程中需要大量的使用到PowerShell 脚本。当时觉得PowerShell 很难理解，需要搜索很多资料才能明白命令到底是做什么的，以及如何在Exchange 中使用PowerShell完成各类简单或者复杂的任务。时间到了2013年的某一个夏日，百无聊赖的时间，从MSDN上下载了一个PowerShell脚本。开始理解这个脚本的编写方法和理论，突然间脑袋突然间开窍了，发现PowerShell其实还蛮有意思。也就是从那时候开始使用PowerShell 解决在各类运维场合中碰到的问题。也逐步开始在个人博客中更新PowerShell的技术类文章，慢慢的国内的资料和内容已经不在能够满足我对于PowerShell的理解和兴趣，我开始在国外的知识网站和视频网站开始深度学习有关PowerShell相关的知识。这里相对来说比较遗憾的是所有的有关PowerShell的中文资料和视频资料，基本上很少，接近于零。有一些国人翻译PowerShell的书也是比较晦涩难懂，从国人的学习角度来说阅读这些资料非常困难。 \t在阅读了非常多的资料和看过非常多的视频之后，我就萌生了一个想法，是不是可以针对国内的学习Windows的朋友们出一套有关PowerShell的整体课程视频呢？说干就干，从开始准备PPT资料到着手录制PowerShell的视频。由于之前一直没有录制视频的技巧，也没有设备。因此走了很多弯路，但是很幸运的是整套视频课程也出来了，也在51CTO 上线了。整套视频的内容包含了PowerShell基础知识入门篇、中级代码编写篇和高级生态应用篇。 也是2020年，有个出版社的朋友在网上看到我的视频后和我提到目前Python内容的书很多，关于Linux系统的自动化运维的书也有很多，但是比较可惜的是Windows 自动化运维方向的书籍基本是空白，然后她就鼓励我出一本PowerShell的书来填补Windows 自动化运维市场的空白。出书的念头以前也有想过，但是针对一本书从无到有，个人觉得还是没有太多把握，也需要花费很多的精力投入。在第一次沟通后我觉得自己还没有准备好，但经过一段时间仔细的思考后觉得这也许可以对自己从事将近20年的IT行业经验做一个很好的总结，决定从零开始完成这本书的写作。 \t写作的最难的部分就是坚持，为了完成书的撰写必须做好完整的计划和规划。事实上坚持真的很难，作为一个上有老下有小的中年男人，在写作过程中经常被各种杂事打断是常有的事情。到了最后不能再拖的时候我制定了一个详细的计划目标，最终完成了这本书的写作。能够写完这本书首先要感谢自己的坚持，同时也要感谢朋友们的鼓励。不过最需要感谢的那些在视频学习网站的学员朋友们，是他们的认可才能让这本书能够真正出炉。也激励我 当没开始的时候认为内容还好，没那么多。但是当真正动笔了以后，我们发现PowerShell的知识点越来越多，需要写的内容越来越多。通过写书我又将PowerShell的知识重新捋了一遍，通过知识的分享让我可以达到知识的第三层次。这里所讲的知识层次如下： \t第一层次：工作用到去学习 \t第二层次：深入理解后录视频分享 \t第三层次：完成相关内容的书籍 技术类的书一般读起来都相对枯燥，为了让大家能够循序渐进的方式学习到相关的知识。我们也引入了两个卡通形象：小博和小铭。小博是小铭的师傅，而小铭是初入职场的小萌新。在数的关键位置我们将会通过对话的方式                          \t\t 小铭                                         小博  这里我们的书配套的视频课程已经上线51CTO平台，视频中大部分内容与书中的内容一致、如果大家觉得单看书理解起来有难度，可以通过图前言1提供的二维码直达我的线上PowerShell系列课程。   图前言1 PowerShell在线视频课程 学习的路程漫漫，但是我们只要开始，每天哪怕只前进一小步，积累久了也是学习的一大步。千里之行始于足下，相信对于没有接触过PowerShell的朋友，学习入门一定是非常困难的事情。为了方便大家有疑问能够得到帮助或者相互交流，欢迎大家加入PowerShell 互助学习小组，我将定期在群内分享学习的思路和案例，帮助大家更深入的理解PowerShell，欢迎大家通过扫描图前言2提供的二维码入群互助学习：   图前言2 PowerShell 学习交流群 最后希望大家能够针对本书提出宝贵意见，让我在下一本书或者再版本书时能够修复大家发现的错误。本书适合各类行业、各类职位，但是以下的职位更适合阅读本书。 \tAD 管理员 \tExchange 管理员 \tPowerShell脚本开发人员 \t.Net 开发人员 最后希望大家能活学活用书本中的知识，在PowerShell自动化运维的道路上狂奔，谢谢大家！"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      2,
+      0,
+      1,
+      0,
+      "IMAGE"
+    ],
+    [
+      2,
+      1,
+      0,
+      3,
+      0,
+      "IMAGE"
+    ],
+    [
+      6,
+      7,
+      0,
+      1,
+      2,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "加载内容",
+      "bounding": [
+        -709.1945190429688,
+        25.965862274169922,
+        422.4720764160156,
+        689.5997314453125
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "核心节点",
+      "bounding": [
+        -228.6291961669922,
+        30.119709014892578,
+        450.5115051269531,
+        725.427978515625
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.0610764609500012,
+      "offset": [
+        782.1760023476427,
+        89.11769526262458
+      ]
+    },
+    "ue_links": [],
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

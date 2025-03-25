@@ -1,0 +1,416 @@
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "revision": 0,
+  "last_node_id": 12,
+  "last_link_id": 21,
+  "nodes": [
+    {
+      "id": 12,
+      "type": "Stage2_load",
+      "pos": [
+        -303.65362548828125,
+        167.527587890625
+      ],
+      "size": [
+        315,
+        122
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "cldm",
+          "type": "CLDM",
+          "links": [
+            17
+          ]
+        },
+        {
+          "name": "diffusion",
+          "type": "DIFFUSION",
+          "links": [
+            18
+          ]
+        },
+        {
+          "name": "infer_type",
+          "type": "INFER_TYPE",
+          "links": [
+            19
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "jtscmw01/ComfyUI-DiffBIR",
+        "ver": "5f738b657d8004ac9581e13f29c34be6990b58ec",
+        "Node name for S&R": "Stage2_load"
+      },
+      "widgets_values": [
+        "cuda",
+        "float16"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "ImageScale",
+      "pos": [
+        -305.7401428222656,
+        348.9054870605469
+      ],
+      "size": [
+        323.9846496582031,
+        130
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 13
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            14,
+            20
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "ImageScale"
+      },
+      "widgets_values": [
+        "area",
+        512,
+        768,
+        "center"
+      ]
+    },
+    {
+      "id": 10,
+      "type": "DiffBIR_sample_advanced",
+      "pos": [
+        228.5104522705078,
+        17.55414581298828
+      ],
+      "size": [
+        400,
+        746
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "stage1_model",
+          "type": "STAGE1",
+          "link": 15
+        },
+        {
+          "name": "task",
+          "type": "TASK",
+          "link": 16
+        },
+        {
+          "name": "cldm",
+          "type": "CLDM",
+          "link": 17
+        },
+        {
+          "name": "diffusion",
+          "type": "DIFFUSION",
+          "link": 18
+        },
+        {
+          "name": "infer_type",
+          "type": "INFER_TYPE",
+          "link": 19
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 20
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            21
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "jtscmw01/ComfyUI-DiffBIR",
+        "ver": "5f738b657d8004ac9581e13f29c34be6990b58ec",
+        "Node name for S&R": "DiffBIR_sample_advanced"
+      },
+      "widgets_values": [
+        2,
+        20,
+        4,
+        true,
+        true,
+        512,
+        256,
+        true,
+        true,
+        512,
+        256,
+        "highres, high quality,4k,hdr",
+        "lowres, embedding:badquality, ",
+        769824993964222,
+        "randomize",
+        "cuda",
+        false,
+        "w_mse",
+        1,
+        1001,
+        -1,
+        "latent",
+        1,
+        [
+          false,
+          true
+        ],
+        [
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "type": "PreviewImage",
+      "pos": [
+        777.7335815429688,
+        83.99944305419922
+      ],
+      "size": [
+        492.73175048828125,
+        595.330810546875
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 21
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 11,
+      "type": "Stage1_load",
+      "pos": [
+        -300.1982421875,
+        -23.222103118896484
+      ],
+      "size": [
+        315,
+        126
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "stage1_model",
+          "type": "STAGE1",
+          "links": [
+            15
+          ]
+        },
+        {
+          "name": "task",
+          "type": "TASK",
+          "links": [
+            16
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "jtscmw01/ComfyUI-DiffBIR",
+        "ver": "5f738b657d8004ac9581e13f29c34be6990b58ec",
+        "Node name for S&R": "Stage1_load"
+      },
+      "widgets_values": [
+        "bid",
+        "cuda",
+        "float16"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "LoadImage",
+      "pos": [
+        -309.4100036621094,
+        525.8906860351562
+      ],
+      "size": [
+        315,
+        314
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            13
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "夜晚噪点图.jpg",
+        "image",
+        ""
+      ]
+    }
+  ],
+  "links": [
+    [
+      13,
+      4,
+      0,
+      8,
+      0,
+      "IMAGE"
+    ],
+    [
+      15,
+      11,
+      0,
+      10,
+      0,
+      "STAGE1"
+    ],
+    [
+      16,
+      11,
+      1,
+      10,
+      1,
+      "TASK"
+    ],
+    [
+      17,
+      12,
+      0,
+      10,
+      2,
+      "CLDM"
+    ],
+    [
+      18,
+      12,
+      1,
+      10,
+      3,
+      "DIFFUSION"
+    ],
+    [
+      19,
+      12,
+      2,
+      10,
+      4,
+      "INFER_TYPE"
+    ],
+    [
+      20,
+      8,
+      0,
+      10,
+      5,
+      "IMAGE"
+    ],
+    [
+      21,
+      10,
+      0,
+      6,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "图片及模型加载",
+      "bounding": [
+        -356.1788635253906,
+        -98.89984130859375,
+        438.5647888183594,
+        981.914306640625
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "核心节点",
+      "bounding": [
+        164.2359161376953,
+        -89.5696792602539,
+        518.0438232421875,
+        970.8564453125
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9646149645000037,
+      "offset": [
+        494.03098470362704,
+        127.26712246514896
+      ]
+    },
+    "ue_links": [],
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

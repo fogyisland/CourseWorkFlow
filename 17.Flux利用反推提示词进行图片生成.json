@@ -1,0 +1,698 @@
+{
+  "id": "59608f48-1488-46b6-8e34-6444bd36c3aa",
+  "revision": 0,
+  "last_node_id": 16,
+  "last_link_id": 25,
+  "nodes": [
+    {
+      "id": 3,
+      "type": "DualCLIPLoaderGGUF",
+      "pos": [
+        220,
+        350
+      ],
+      "size": [
+        359.85382080078125,
+        106
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            20
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DualCLIPLoaderGGUF"
+      },
+      "widgets_values": [
+        "clip_l.safetensors",
+        "t5xxl_fp8_e4m3fn.safetensors",
+        "flux"
+      ]
+    },
+    {
+      "id": 1,
+      "type": "UnetLoaderGGUF",
+      "pos": [
+        220,
+        230
+      ],
+      "size": [
+        368.5204772949219,
+        73.0526351928711
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            19
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UnetLoaderGGUF"
+      },
+      "widgets_values": [
+        "flux1-dev-Q4_K_S.gguf"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "CLIPTextEncodeFlux",
+      "pos": [
+        745.7437133789062,
+        243.62606811523438
+      ],
+      "size": [
+        400,
+        207.5263214111328
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 20
+        },
+        {
+          "name": "t5xxl",
+          "type": "STRING",
+          "widget": {
+            "name": "t5xxl"
+          },
+          "link": 16
+        },
+        {
+          "name": "clip_l",
+          "type": "STRING",
+          "widget": {
+            "name": "clip_l"
+          },
+          "link": 15
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncodeFlux"
+      },
+      "widgets_values": [
+        "high building",
+        "high building",
+        3.5,
+        [
+          false,
+          true
+        ],
+        [
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "id": 9,
+      "type": "PreviewImage",
+      "pos": [
+        1673.837646484375,
+        299.12286376953125
+      ],
+      "size": [
+        450.84222412109375,
+        573.8130493164062
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 17
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 11,
+      "type": "WD14Tagger|pysssss",
+      "pos": [
+        740.3462524414062,
+        785.2928466796875
+      ],
+      "size": [
+        335.5263366699219,
+        232
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 14
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            15,
+            16
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "WD14Tagger|pysssss"
+      },
+      "widgets_values": [
+        "wd-v1-4-moat-tagger-v2",
+        0.25000000000000006,
+        0.85,
+        false,
+        false,
+        "",
+        "outdoors, sky, day, cloud, tree, blue_sky, no_humans, night, sunlight, building, scenery, reflection, city, fence, railing, road, cityscape, lamppost, street, skyscraper"
+      ]
+    },
+    {
+      "id": 13,
+      "type": "LoadImage",
+      "pos": [
+        238.591552734375,
+        690.2637939453125
+      ],
+      "size": [
+        315,
+        314
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            14,
+            22
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "建筑图3.webp",
+        "image",
+        ""
+      ]
+    },
+    {
+      "id": 7,
+      "type": "VAELoader",
+      "pos": [
+        220,
+        500
+      ],
+      "size": [
+        361.374267578125,
+        70.16377258300781
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            13,
+            24
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "flux1DevVAE_safetensors.safetensors"
+      ]
+    },
+    {
+      "id": 15,
+      "type": "VAEEncode",
+      "pos": [
+        754.358642578125,
+        549.6342163085938
+      ],
+      "size": [
+        388.7778015136719,
+        100.26168060302734
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 23
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 24
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            25
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEEncode"
+      }
+    },
+    {
+      "id": 12,
+      "type": "VAEDecode",
+      "pos": [
+        1209.1845703125,
+        560.7986450195312
+      ],
+      "size": [
+        345.8575744628906,
+        82.73094940185547
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 12
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 13
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            17
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 16,
+      "type": "ImageResizeKJ",
+      "pos": [
+        1151.147705078125,
+        782.6010131835938
+      ],
+      "size": [
+        315,
+        266
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 22
+        },
+        {
+          "name": "get_image_size",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "width_input",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "width_input"
+          },
+          "link": null
+        },
+        {
+          "name": "height_input",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "height_input"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            23
+          ]
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageResizeKJ"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        "nearest-exact",
+        false,
+        2,
+        0,
+        0,
+        "center"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "FluxSamplerParams+",
+      "pos": [
+        1215.417236328125,
+        227.73696899414062
+      ],
+      "size": [
+        327.5999755859375,
+        286
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 19
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 3
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 25
+        },
+        {
+          "name": "loras",
+          "shape": 7,
+          "type": "LORA_PARAMS",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            12
+          ]
+        },
+        {
+          "name": "params",
+          "type": "SAMPLER_PARAMS",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FluxSamplerParams+"
+      },
+      "widgets_values": [
+        "?",
+        "euler",
+        "simple",
+        "20",
+        "3.5",
+        "",
+        "",
+        "0.85"
+      ]
+    }
+  ],
+  "links": [
+    [
+      3,
+      5,
+      0,
+      4,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      12,
+      4,
+      0,
+      12,
+      0,
+      "LATENT"
+    ],
+    [
+      13,
+      7,
+      0,
+      12,
+      1,
+      "VAE"
+    ],
+    [
+      14,
+      13,
+      0,
+      11,
+      0,
+      "IMAGE"
+    ],
+    [
+      15,
+      11,
+      0,
+      5,
+      2,
+      "STRING"
+    ],
+    [
+      16,
+      11,
+      0,
+      5,
+      1,
+      "STRING"
+    ],
+    [
+      17,
+      12,
+      0,
+      9,
+      0,
+      "IMAGE"
+    ],
+    [
+      19,
+      1,
+      0,
+      4,
+      0,
+      "MODEL"
+    ],
+    [
+      20,
+      3,
+      0,
+      5,
+      0,
+      "CLIP"
+    ],
+    [
+      22,
+      13,
+      0,
+      16,
+      0,
+      "IMAGE"
+    ],
+    [
+      23,
+      16,
+      0,
+      15,
+      0,
+      "IMAGE"
+    ],
+    [
+      24,
+      7,
+      0,
+      15,
+      1,
+      "VAE"
+    ],
+    [
+      25,
+      15,
+      0,
+      4,
+      2,
+      "LATENT"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "加载模块",
+      "bounding": [
+        172.45103454589844,
+        129.9706573486328,
+        478.30426025390625,
+        482.163818359375
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "成图节点",
+      "bounding": [
+        703.4739379882812,
+        139.85377502441406,
+        934.4448852539062,
+        523.9766845703125
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "加载图片",
+      "bounding": [
+        174.7315673828125,
+        616.140869140625,
+        476.7838134765625,
+        406.9007568359375
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "反推组件",
+      "bounding": [
+        710.6971435546875,
+        710.7900390625,
+        390.1170654296875,
+        311.87139892578125
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 5,
+      "title": "设定图片大小",
+      "bounding": [
+        1138.7152099609375,
+        713.4512939453125,
+        418.2457275390625,
+        349.1229248046875
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.8769226950000015,
+      "offset": [
+        -143.56858133014052,
+        -22.39816806614121
+      ]
+    },
+    "node_versions": {
+      "ComfyUI-GGUF": "5875c52f59baca3a9372d68c43a3775e21846fe0",
+      "comfy-core": "0.3.27",
+      "ComfyUI-WD14-Tagger": "d33501765c5bf3dca6e90e0ebaa962890999fbc5",
+      "comfyui-kjnodes": "fb03b434142e9548765724f01a05ddcbf3a17be4",
+      "ComfyUI_essentials": "33ff89fd354d8ec3ab6affb605a79a931b445d99"
+    },
+    "ue_links": [],
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

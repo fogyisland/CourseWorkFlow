@@ -1,0 +1,266 @@
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "revision": 0,
+  "last_node_id": 6,
+  "last_link_id": 5,
+  "nodes": [
+    {
+      "id": 2,
+      "type": "LoadImage",
+      "pos": [
+        -660.645263671875,
+        153.7012939453125
+      ],
+      "size": [
+        315,
+        314
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "00005-512.png",
+        "image",
+        ""
+      ]
+    },
+    {
+      "id": 3,
+      "type": "PreviewImage",
+      "pos": [
+        318.6031799316406,
+        145.13885498046875
+      ],
+      "size": [
+        390.6990966796875,
+        473.9508056640625
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 2
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 1,
+      "type": "ComfyWordCloud",
+      "pos": [
+        -208.3520965576172,
+        109.8369140625
+      ],
+      "size": [
+        400,
+        612
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "color_ref_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 1
+        },
+        {
+          "name": "mask_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            2
+          ]
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_wordcloud",
+        "ver": "9f4efdba82707ae8bed25ec7d79ce9cbce2df324",
+        "Node name for S&R": "ComfyWordCloud"
+      },
+      "widgets_values": [
+        "",
+        512,
+        512,
+        1,
+        0,
+        "simkai.ttf",
+        4,
+        128,
+        0.5,
+        "viridis",
+        "#FFFFFF",
+        true,
+        0.9,
+        200,
+        false,
+        false,
+        -1,
+        "",
+        0,
+        "#000000",
+        "",
+        60,
+        [
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "type": "LoadTextFile",
+      "pos": [
+        -663.4287719726562,
+        571.846435546875
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Text",
+          "type": "STRING",
+          "links": [
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_wordcloud",
+        "ver": "9f4efdba82707ae8bed25ec7d79ce9cbce2df324",
+        "Node name for S&R": "LoadTextFile"
+      },
+      "widgets_values": [
+        "e:\\video\\powershell.txt"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      2,
+      0,
+      1,
+      0,
+      "IMAGE"
+    ],
+    [
+      2,
+      1,
+      0,
+      3,
+      0,
+      "IMAGE"
+    ],
+    [
+      5,
+      6,
+      0,
+      1,
+      2,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "加载内容",
+      "bounding": [
+        -709.1945190429688,
+        25.965862274169922,
+        422.4720764160156,
+        689.5997314453125
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "核心节点",
+      "bounding": [
+        -228.6291961669922,
+        30.119709014892578,
+        450.5115051269531,
+        725.427978515625
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.0610764609500012,
+      "offset": [
+        782.1760023476427,
+        89.11769526262458
+      ]
+    },
+    "ue_links": [],
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

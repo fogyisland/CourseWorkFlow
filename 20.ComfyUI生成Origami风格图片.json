@@ -1,0 +1,594 @@
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "revision": 0,
+  "last_node_id": 12,
+  "last_link_id": 13,
+  "nodes": [
+    {
+      "id": 3,
+      "type": "DualCLIPLoaderGGUF",
+      "pos": [
+        321.1530456542969,
+        349.9408874511719
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            9
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DualCLIPLoaderGGUF"
+      },
+      "widgets_values": [
+        "clip_l.safetensors",
+        "t5xxl_fp8_e4m3fn.safetensors",
+        "flux"
+      ]
+    },
+    {
+      "id": 10,
+      "type": "LoraLoader",
+      "pos": [
+        333.9230041503906,
+        512.3191528320312
+      ],
+      "size": [
+        315,
+        126
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 8
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 9
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            10
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            11
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoader"
+      },
+      "widgets_values": [
+        "ral-orgmi-flux.safetensors",
+        1.0000000000000002,
+        1.0000000000000002
+      ]
+    },
+    {
+      "id": 2,
+      "type": "UnetLoaderGGUF",
+      "pos": [
+        311.32269287109375,
+        229.3617401123047
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            8
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UnetLoaderGGUF"
+      },
+      "widgets_values": [
+        "flux1-dev-Q4_K_S.gguf"
+      ]
+    },
+    {
+      "id": 9,
+      "type": "PreviewImage",
+      "pos": [
+        1647.07763671875,
+        204.82696533203125
+      ],
+      "size": [
+        507.2515563964844,
+        451.26324462890625
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 7
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 4,
+      "type": "FluxSamplerParams+",
+      "pos": [
+        1206.2564697265625,
+        137.3734130859375
+      ],
+      "size": [
+        327.5999755859375,
+        286
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 10
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 3
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 4
+        },
+        {
+          "name": "loras",
+          "shape": 7,
+          "type": "LORA_PARAMS",
+          "link": null
+        },
+        {
+          "name": "seed",
+          "type": "STRING",
+          "widget": {
+            "name": "seed"
+          },
+          "link": 12
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            5
+          ]
+        },
+        {
+          "name": "params",
+          "type": "SAMPLER_PARAMS",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FluxSamplerParams+"
+      },
+      "widgets_values": [
+        "?",
+        "euler",
+        "simple",
+        "20",
+        "3.5",
+        "",
+        "",
+        "1.0"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "EmptyLatentImage",
+      "pos": [
+        763.316650390625,
+        390.462646484375
+      ],
+      "size": [
+        406.2281188964844,
+        106
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        512,
+        512,
+        1
+      ]
+    },
+    {
+      "id": 7,
+      "type": "VAEDecode",
+      "pos": [
+        1207.1549072265625,
+        474.91748046875
+      ],
+      "size": [
+        317.1930236816406,
+        104.53801727294922
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 5
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 6
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 8,
+      "type": "VAELoader",
+      "pos": [
+        768.81005859375,
+        545.5908813476562
+      ],
+      "size": [
+        389.50299072265625,
+        58
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            6
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "flux1DevVAE_safetensors.safetensors"
+      ]
+    },
+    {
+      "id": 11,
+      "type": "RandomInt",
+      "pos": [
+        780.4533081054688,
+        653.453125
+      ],
+      "size": [
+        379.0671081542969,
+        106.83787536621094
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            12,
+            13
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomInt"
+      },
+      "widgets_values": [
+        0,
+        1000000000000
+      ]
+    },
+    {
+      "id": 12,
+      "type": "ShowText|pysssss",
+      "pos": [
+        1206.018310546875,
+        650.0806884765625
+      ],
+      "size": [
+        315,
+        100
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 13
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        "919806954773"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "CLIPTextEncodeFlux",
+      "pos": [
+        759.515380859375,
+        143.3170928955078
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 11
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncodeFlux"
+      },
+      "widgets_values": [
+        " ral-orgmi,An illustration in Origami style, 1girl in the forest",
+        " ral-orgmi,An illustration in Origami style, 1girl in the forest",
+        3.5,
+        [
+          false,
+          true
+        ],
+        [
+          false,
+          true
+        ]
+      ]
+    }
+  ],
+  "links": [
+    [
+      3,
+      5,
+      0,
+      4,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      4,
+      6,
+      0,
+      4,
+      2,
+      "LATENT"
+    ],
+    [
+      5,
+      4,
+      0,
+      7,
+      0,
+      "LATENT"
+    ],
+    [
+      6,
+      8,
+      0,
+      7,
+      1,
+      "VAE"
+    ],
+    [
+      7,
+      7,
+      0,
+      9,
+      0,
+      "IMAGE"
+    ],
+    [
+      8,
+      2,
+      0,
+      10,
+      0,
+      "MODEL"
+    ],
+    [
+      9,
+      3,
+      0,
+      10,
+      1,
+      "CLIP"
+    ],
+    [
+      10,
+      10,
+      0,
+      4,
+      0,
+      "MODEL"
+    ],
+    [
+      11,
+      10,
+      1,
+      5,
+      0,
+      "CLIP"
+    ],
+    [
+      12,
+      11,
+      1,
+      4,
+      4,
+      "STRING"
+    ],
+    [
+      13,
+      11,
+      1,
+      12,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "加载Unet和Lora",
+      "bounding": [
+        299.76019287109375,
+        104.91071319580078,
+        381.8927001953125,
+        617.0018310546875
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "成图节点",
+      "bounding": [
+        740.655029296875,
+        49.30569076538086,
+        841.4889526367188,
+        800.1492309570312
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.0152559799477066,
+      "offset": [
+        -223.51234720128042,
+        70.1547986406605
+      ]
+    },
+    "node_versions": {
+      "ComfyUI-GGUF": "5875c52f59baca3a9372d68c43a3775e21846fe0",
+      "comfy-core": "0.3.27",
+      "ComfyUI_essentials": "33ff89fd354d8ec3ab6affb605a79a931b445d99",
+      "comfyui-art-venture": "50abaace756b96f5f5dc2c9d72826ef371afd45e",
+      "ComfyUI-Custom-Scripts": "a53ef9b617ed1331640d7a2cd97644995908dc00"
+    },
+    "ue_links": [],
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

@@ -1,0 +1,362 @@
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "revision": 0,
+  "last_node_id": 17,
+  "last_link_id": 32,
+  "nodes": [
+    {
+      "id": 11,
+      "type": "LoadImage",
+      "pos": [
+        -310,
+        120
+      ],
+      "size": [
+        315,
+        314
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            22
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "00005-512.png",
+        "image",
+        ""
+      ]
+    },
+    {
+      "id": 14,
+      "type": "AddBackgroundNode",
+      "pos": [
+        -320,
+        670
+      ],
+      "size": [
+        309.7005615234375,
+        51.65463638305664
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input_img",
+          "type": "IMAGE",
+          "link": 24
+        },
+        {
+          "name": "normal_params",
+          "type": "PARAMS",
+          "link": 25
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            30
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "HivisionIDPhotos-ComfyUI",
+        "ver": "dbff026bad34f1d68eb2a89705681488f68e7c5e",
+        "Node name for S&R": "AddBackgroundNode"
+      }
+    },
+    {
+      "id": 13,
+      "type": "ZHHivisionParamsNode",
+      "pos": [
+        -320,
+        470
+      ],
+      "size": [
+        316.88482666015625,
+        155.88487243652344
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "normal_params",
+          "type": "PARAMS",
+          "links": [
+            23,
+            25,
+            31
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "HivisionIDPhotos-ComfyUI",
+        "ver": "dbff026bad34f1d68eb2a89705681488f68e7c5e",
+        "Node name for S&R": "ZHHivisionParamsNode"
+      },
+      "widgets_values": [
+        "一寸\t\t(413, 295)",
+        "蓝色",
+        "纯色",
+        300,
+        300
+      ]
+    },
+    {
+      "id": 15,
+      "type": "PreviewImage",
+      "pos": [
+        643.525390625,
+        88.54893493652344
+      ],
+      "size": [
+        676.0695190429688,
+        682.5332641601562
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 32
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 17,
+      "type": "HivisionLayOutNode",
+      "pos": [
+        188.93722534179688,
+        563.1488037109375
+      ],
+      "size": [
+        328.8233337402344,
+        117.918212890625
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input_img",
+          "type": "IMAGE",
+          "link": 30
+        },
+        {
+          "name": "normal_params",
+          "type": "PARAMS",
+          "link": 31
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            32
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "HivisionIDPhotos-ComfyUI",
+        "ver": "dbff026bad34f1d68eb2a89705681488f68e7c5e",
+        "Node name for S&R": "HivisionLayOutNode"
+      }
+    },
+    {
+      "id": 12,
+      "type": "HivisionNode",
+      "pos": [
+        184.0089569091797,
+        149.45364379882812
+      ],
+      "size": [
+        330,
+        342
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input_img",
+          "type": "IMAGE",
+          "link": 22
+        },
+        {
+          "name": "normal_params",
+          "type": "PARAMS",
+          "link": 23
+        }
+      ],
+      "outputs": [
+        {
+          "name": "standard_img",
+          "type": "IMAGE",
+          "links": null
+        },
+        {
+          "name": "hd_img",
+          "type": "IMAGE",
+          "links": [
+            24
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "HivisionIDPhotos-ComfyUI",
+        "ver": "dbff026bad34f1d68eb2a89705681488f68e7c5e",
+        "Node name for S&R": "HivisionNode"
+      },
+      "widgets_values": [
+        true,
+        false,
+        false,
+        "modnet_photographic_portrait_matting",
+        "mtcnn",
+        0.2,
+        0.12,
+        2,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "links": [
+    [
+      22,
+      11,
+      0,
+      12,
+      0,
+      "IMAGE"
+    ],
+    [
+      23,
+      13,
+      0,
+      12,
+      1,
+      "PARAMS"
+    ],
+    [
+      24,
+      12,
+      1,
+      14,
+      0,
+      "IMAGE"
+    ],
+    [
+      25,
+      13,
+      0,
+      14,
+      1,
+      "PARAMS"
+    ],
+    [
+      30,
+      14,
+      0,
+      17,
+      0,
+      "IMAGE"
+    ],
+    [
+      31,
+      13,
+      0,
+      17,
+      1,
+      "PARAMS"
+    ],
+    [
+      32,
+      17,
+      0,
+      15,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "加载图像与参数",
+      "bounding": [
+        -396.5906066894531,
+        47.62504196166992,
+        463.57086181640625,
+        717.7172241210938
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "核心节点",
+      "bounding": [
+        138.40040588378906,
+        48.25336837768555,
+        441.58050537109375,
+        713.319091796875
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.797202450000003,
+      "offset": [
+        709.2034374302108,
+        294.85157930894565
+      ]
+    },
+    "ue_links": [],
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
